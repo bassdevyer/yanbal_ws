@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="yanbal_ws:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="yanbal-ws.war">
+      <element id="artifact" artifact-name="yanbal_ws:war exploded" />
+    </root>
+  </artifact>
+</component>

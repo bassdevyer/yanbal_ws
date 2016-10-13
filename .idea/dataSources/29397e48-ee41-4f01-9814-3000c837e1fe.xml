@@ -1,0 +1,401 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="SQL Server (Microsoft) - yanbal@192.168.0.164">
+  <database-model serializer="dbm" rdbms="MSSQL" format-version="2.6">
+    <database id="1" name="yanbal">
+      <object-id>7</object-id>
+      <visible>1</visible>
+    </database>
+    <database id="2" name="master">
+      <object-id>1</object-id>
+    </database>
+    <database id="3" name="tempdb">
+      <object-id>2</object-id>
+    </database>
+    <database id="4" name="model">
+      <object-id>3</object-id>
+    </database>
+    <database id="5" name="msdb">
+      <object-id>4</object-id>
+    </database>
+    <database id="6" name="ReportServer$SQL2008">
+      <object-id>5</object-id>
+    </database>
+    <database id="7" name="ReportServer$SQL2008TempDB">
+      <object-id>6</object-id>
+    </database>
+    <schema id="8" parent="1" name="dbo">
+      <object-id>1</object-id>
+      <visible>1</visible>
+      <introspection-timestamp>2016-10-13.15:45:13.920</introspection-timestamp>
+    </schema>
+    <schema id="9" parent="1" name="guest">
+      <object-id>2</object-id>
+    </schema>
+    <schema id="10" parent="1" name="INFORMATION_SCHEMA">
+      <object-id>3</object-id>
+    </schema>
+    <schema id="11" parent="1" name="sys">
+      <object-id>4</object-id>
+    </schema>
+    <schema id="12" parent="1" name="db_owner">
+      <object-id>16384</object-id>
+    </schema>
+    <schema id="13" parent="1" name="db_accessadmin">
+      <object-id>16385</object-id>
+    </schema>
+    <schema id="14" parent="1" name="db_securityadmin">
+      <object-id>16386</object-id>
+    </schema>
+    <schema id="15" parent="1" name="db_ddladmin">
+      <object-id>16387</object-id>
+    </schema>
+    <schema id="16" parent="1" name="db_backupoperator">
+      <object-id>16389</object-id>
+    </schema>
+    <schema id="17" parent="1" name="db_datareader">
+      <object-id>16390</object-id>
+    </schema>
+    <schema id="18" parent="1" name="db_datawriter">
+      <object-id>16391</object-id>
+    </schema>
+    <schema id="19" parent="1" name="db_denydatareader">
+      <object-id>16392</object-id>
+    </schema>
+    <schema id="20" parent="1" name="db_denydatawriter">
+      <object-id>16393</object-id>
+    </schema>
+    <table id="21" parent="8" name="CAMPANA">
+      <object-id>2105058535</object-id>
+      <created-timestamp>2016-10-11.21:46:20.287</created-timestamp>
+      <modified-timestamp>2016-10-11.21:46:20.287</modified-timestamp>
+    </table>
+    <table id="22" parent="8" name="CLIENTE">
+      <object-id>2137058649</object-id>
+      <created-timestamp>2016-10-11.21:46:20.290</created-timestamp>
+      <modified-timestamp>2016-10-11.21:46:20.290</modified-timestamp>
+    </table>
+    <table id="23" parent="8" name="CONSULTORA">
+      <object-id>21575115</object-id>
+      <created-timestamp>2016-10-11.21:46:20.290</created-timestamp>
+      <modified-timestamp>2016-10-11.21:46:20.290</modified-timestamp>
+    </table>
+    <table id="24" parent="8" name="NOTIFICACION">
+      <object-id>53575229</object-id>
+      <created-timestamp>2016-10-11.21:46:20.293</created-timestamp>
+      <modified-timestamp>2016-10-11.21:46:20.297</modified-timestamp>
+    </table>
+    <table id="25" parent="8" name="PEDIDOS_CABECERA">
+      <object-id>85575343</object-id>
+      <created-timestamp>2016-10-11.21:46:20.293</created-timestamp>
+      <modified-timestamp>2016-10-11.21:46:20.300</modified-timestamp>
+    </table>
+    <table id="26" parent="8" name="PEDIDOS_DETALLE">
+      <object-id>117575457</object-id>
+      <created-timestamp>2016-10-11.21:46:20.297</created-timestamp>
+      <modified-timestamp>2016-10-11.21:46:20.300</modified-timestamp>
+    </table>
+    <table id="27" parent="8" name="SEMANA">
+      <object-id>149575571</object-id>
+      <created-timestamp>2016-10-11.21:46:20.300</created-timestamp>
+      <modified-timestamp>2016-10-11.21:46:20.303</modified-timestamp>
+    </table>
+    <column id="28" parent="21" name="COD_CAMPANA">
+      <mandatory>1</mandatory>
+      <data-type>int|0</data-type>
+    </column>
+    <column id="29" parent="21" name="DESCRIPCION_CAMPANA">
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="30" parent="21" name="ESTADO">
+      <mandatory>1</mandatory>
+      <data-type>varchar(1)|0</data-type>
+    </column>
+    <index id="31" parent="21" name="PK_CAMPANA">
+      <columns>COD_CAMPANA</columns>
+      <desc-columns></desc-columns>
+      <unique>1</unique>
+      <clustering>1</clustering>
+      <position>1</position>
+    </index>
+    <key id="32" parent="21" name="PK_CAMPANA">
+      <object-id>2121058592</object-id>
+      <created-timestamp>2016-10-11.21:46:20.290</created-timestamp>
+      <modified-timestamp>2016-10-11.21:46:20.290</modified-timestamp>
+      <columns>COD_CAMPANA</columns>
+      <underlying-index>PK_CAMPANA</underlying-index>
+      <primary>1</primary>
+    </key>
+    <column id="33" parent="22" name="IDENTIFICACION_CLIENTE">
+      <mandatory>1</mandatory>
+      <data-type>varchar(15)|0</data-type>
+    </column>
+    <column id="34" parent="22" name="TIPO_IDENTIFICACION_CLIENTE">
+      <mandatory>1</mandatory>
+      <data-type>varchar(36)|0</data-type>
+    </column>
+    <column id="35" parent="22" name="NOMBRES_CLIENTE">
+      <mandatory>1</mandatory>
+      <data-type>varchar(50)|0</data-type>
+    </column>
+    <column id="36" parent="22" name="APELLIDOS_CLIENTE">
+      <mandatory>1</mandatory>
+      <data-type>varchar(50)|0</data-type>
+    </column>
+    <column id="37" parent="22" name="EMAIL_CLIENTE">
+      <mandatory>1</mandatory>
+      <data-type>varchar(50)|0</data-type>
+    </column>
+    <column id="38" parent="22" name="CELULAR_CLIENTE">
+      <mandatory>1</mandatory>
+      <data-type>varchar(16)|0</data-type>
+    </column>
+    <column id="39" parent="22" name="TELEFONO_CLIENTE">
+      <mandatory>1</mandatory>
+      <data-type>varchar(16)|0</data-type>
+    </column>
+    <column id="40" parent="22" name="FECHA_NACIMIENTO_CLIENTE">
+      <mandatory>1</mandatory>
+      <data-type>varchar(25)|0</data-type>
+    </column>
+    <column id="41" parent="22" name="GENERO_CLIENTE">
+      <mandatory>1</mandatory>
+      <data-type>varchar(16)|0</data-type>
+    </column>
+    <column id="42" parent="22" name="PASSWORD">
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <index id="43" parent="22" name="PK_CLIENTE">
+      <columns>IDENTIFICACION_CLIENTE</columns>
+      <desc-columns></desc-columns>
+      <unique>1</unique>
+      <clustering>1</clustering>
+      <position>1</position>
+    </index>
+    <key id="44" parent="22" name="PK_CLIENTE">
+      <object-id>5575058</object-id>
+      <created-timestamp>2016-10-11.21:46:20.290</created-timestamp>
+      <modified-timestamp>2016-10-11.21:46:20.290</modified-timestamp>
+      <columns>IDENTIFICACION_CLIENTE</columns>
+      <underlying-index>PK_CLIENTE</underlying-index>
+      <primary>1</primary>
+    </key>
+    <column id="45" parent="23" name="IDENTIFICACION_CONSULTORA">
+      <mandatory>1</mandatory>
+      <data-type>varchar(15)|0</data-type>
+    </column>
+    <column id="46" parent="23" name="TIPO_IDENTIFICACION_CONSULTORA">
+      <mandatory>1</mandatory>
+      <data-type>varchar(36)|0</data-type>
+    </column>
+    <column id="47" parent="23" name="NOMBRES_CONSULTORA">
+      <mandatory>1</mandatory>
+      <data-type>varchar(50)|0</data-type>
+    </column>
+    <column id="48" parent="23" name="APELLIDOS_CONSULTORA">
+      <mandatory>1</mandatory>
+      <data-type>varchar(50)|0</data-type>
+    </column>
+    <column id="49" parent="23" name="EMAIL_CONSULTORA">
+      <mandatory>1</mandatory>
+      <data-type>varchar(50)|0</data-type>
+    </column>
+    <column id="50" parent="23" name="CELULAR_CONSULTORA">
+      <mandatory>1</mandatory>
+      <data-type>varchar(16)|0</data-type>
+    </column>
+    <column id="51" parent="23" name="TELEFONO_CONSULTORA">
+      <mandatory>1</mandatory>
+      <data-type>varchar(16)|0</data-type>
+    </column>
+    <column id="52" parent="23" name="FECHA_NACIMIENTO_CONSULTORA">
+      <mandatory>1</mandatory>
+      <data-type>varchar(25)|0</data-type>
+    </column>
+    <column id="53" parent="23" name="GENERO_CONSULTORA">
+      <mandatory>1</mandatory>
+      <data-type>varchar(16)|0</data-type>
+    </column>
+    <column id="54" parent="23" name="PASSWORD">
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <index id="55" parent="23" name="PK_CONSULTORA">
+      <columns>IDENTIFICACION_CONSULTORA</columns>
+      <desc-columns></desc-columns>
+      <unique>1</unique>
+      <clustering>1</clustering>
+      <position>1</position>
+    </index>
+    <key id="56" parent="23" name="PK_CONSULTORA">
+      <object-id>37575172</object-id>
+      <created-timestamp>2016-10-11.21:46:20.290</created-timestamp>
+      <modified-timestamp>2016-10-11.21:46:20.290</modified-timestamp>
+      <columns>IDENTIFICACION_CONSULTORA</columns>
+      <underlying-index>PK_CONSULTORA</underlying-index>
+      <primary>1</primary>
+    </key>
+    <column id="57" parent="24" name="ID_TELEFONO">
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="58" parent="24" name="IDENTIFICACION_CONSULTORA">
+      <mandatory>1</mandatory>
+      <data-type>varchar(15)|0</data-type>
+    </column>
+    <column id="59" parent="24" name="IDENTIFICACION">
+      <mandatory>1</mandatory>
+      <data-type>varchar(15)|0</data-type>
+    </column>
+    <column id="60" parent="24" name="ESTADO">
+      <mandatory>1</mandatory>
+      <data-type>varchar(1)|0</data-type>
+    </column>
+    <index id="61" parent="24" name="PK_NOTIFICACION">
+      <columns>ID_TELEFONO</columns>
+      <desc-columns></desc-columns>
+      <unique>1</unique>
+      <clustering>1</clustering>
+      <position>1</position>
+    </index>
+    <index id="62" parent="24" name="RELATIONSHIP_6_FK">
+      <columns>IDENTIFICACION_CONSULTORA</columns>
+      <desc-columns></desc-columns>
+      <position>2</position>
+    </index>
+    <key id="63" parent="24" name="PK_NOTIFICACION">
+      <object-id>69575286</object-id>
+      <created-timestamp>2016-10-11.21:46:20.293</created-timestamp>
+      <modified-timestamp>2016-10-11.21:46:20.293</modified-timestamp>
+      <columns>ID_TELEFONO</columns>
+      <underlying-index>PK_NOTIFICACION</underlying-index>
+      <primary>1</primary>
+    </key>
+    <column id="64" parent="25" name="CODIGO_PEDIDO_CABECERA">
+      <mandatory>1</mandatory>
+      <data-type>int|0</data-type>
+    </column>
+    <column id="65" parent="25" name="IDENTIFICACION_CONSULTORA">
+      <mandatory>1</mandatory>
+      <data-type>varchar(15)|0</data-type>
+    </column>
+    <column id="66" parent="25" name="IDENTIFICACION_CLIENTE">
+      <mandatory>1</mandatory>
+      <data-type>varchar(15)|0</data-type>
+    </column>
+    <column id="67" parent="25" name="FECHA_COMPRA">
+      <mandatory>1</mandatory>
+      <data-type>varchar(16)|0</data-type>
+    </column>
+    <index id="68" parent="25" name="PK_PEDIDOS_CABECERA">
+      <columns>CODIGO_PEDIDO_CABECERA</columns>
+      <desc-columns></desc-columns>
+      <unique>1</unique>
+      <clustering>1</clustering>
+      <position>1</position>
+    </index>
+    <index id="69" parent="25" name="RELATIONSHIP_3_FK">
+      <columns>IDENTIFICACION_CONSULTORA</columns>
+      <desc-columns></desc-columns>
+      <position>2</position>
+    </index>
+    <index id="70" parent="25" name="RELATIONSHIP_4_FK">
+      <columns>IDENTIFICACION_CLIENTE</columns>
+      <desc-columns></desc-columns>
+      <position>3</position>
+    </index>
+    <key id="71" parent="25" name="PK_PEDIDOS_CABECERA">
+      <object-id>101575400</object-id>
+      <created-timestamp>2016-10-11.21:46:20.293</created-timestamp>
+      <modified-timestamp>2016-10-11.21:46:20.293</modified-timestamp>
+      <columns>CODIGO_PEDIDO_CABECERA</columns>
+      <underlying-index>PK_PEDIDOS_CABECERA</underlying-index>
+      <primary>1</primary>
+    </key>
+    <column id="72" parent="26" name="CODIGO_PEDIDOS_DETALLE">
+      <mandatory>1</mandatory>
+      <data-type>int|0</data-type>
+    </column>
+    <column id="73" parent="26" name="CODIGO_PEDIDO_CABECERA">
+      <mandatory>1</mandatory>
+      <data-type>int|0</data-type>
+    </column>
+    <column id="74" parent="26" name="NOMBRE_PRODUCTO">
+      <mandatory>1</mandatory>
+      <data-type>varchar(32)|0</data-type>
+    </column>
+    <column id="75" parent="26" name="DESCRIPCION_PRODUCTO">
+      <mandatory>1</mandatory>
+      <data-type>varchar(256)|0</data-type>
+    </column>
+    <column id="76" parent="26" name="CANTIDAD">
+      <mandatory>1</mandatory>
+      <data-type>int|0</data-type>
+    </column>
+    <column id="77" parent="26" name="PRECIO">
+      <mandatory>1</mandatory>
+      <data-type>float|0</data-type>
+    </column>
+    <column id="78" parent="26" name="ESTADO">
+      <mandatory>1</mandatory>
+      <data-type>varchar(1)|0</data-type>
+    </column>
+    <index id="79" parent="26" name="PK_PEDIDOS_DETALLE">
+      <columns>CODIGO_PEDIDOS_DETALLE</columns>
+      <desc-columns></desc-columns>
+      <unique>1</unique>
+      <clustering>1</clustering>
+      <position>1</position>
+    </index>
+    <index id="80" parent="26" name="RELATIONSHIP_5_FK">
+      <columns>CODIGO_PEDIDO_CABECERA</columns>
+      <desc-columns></desc-columns>
+      <position>2</position>
+    </index>
+    <key id="81" parent="26" name="PK_PEDIDOS_DETALLE">
+      <object-id>133575514</object-id>
+      <created-timestamp>2016-10-11.21:46:20.297</created-timestamp>
+      <modified-timestamp>2016-10-11.21:46:20.297</modified-timestamp>
+      <columns>CODIGO_PEDIDOS_DETALLE</columns>
+      <underlying-index>PK_PEDIDOS_DETALLE</underlying-index>
+      <primary>1</primary>
+    </key>
+    <column id="82" parent="27" name="COD_SEMANA">
+      <mandatory>1</mandatory>
+      <data-type>int|0</data-type>
+    </column>
+    <column id="83" parent="27" name="COD_CAMPANA">
+      <mandatory>1</mandatory>
+      <data-type>int|0</data-type>
+    </column>
+    <column id="84" parent="27" name="DESCRIPCION_SEMANA">
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="85" parent="27" name="ESTADO_SEMANA">
+      <mandatory>1</mandatory>
+      <data-type>varchar(1)|0</data-type>
+    </column>
+    <index id="86" parent="27" name="PK_SEMANA">
+      <columns>COD_SEMANA</columns>
+      <desc-columns></desc-columns>
+      <unique>1</unique>
+      <clustering>1</clustering>
+      <position>1</position>
+    </index>
+    <index id="87" parent="27" name="RELATIONSHIP_2_FK">
+      <columns>COD_CAMPANA</columns>
+      <desc-columns></desc-columns>
+      <position>2</position>
+    </index>
+    <key id="88" parent="27" name="PK_SEMANA">
+      <object-id>165575628</object-id>
+      <created-timestamp>2016-10-11.21:46:20.300</created-timestamp>
+      <modified-timestamp>2016-10-11.21:46:20.300</modified-timestamp>
+      <columns>COD_SEMANA</columns>
+      <underlying-index>PK_SEMANA</underlying-index>
+      <primary>1</primary>
+    </key>
+  </database-model>
+</dataSource>
