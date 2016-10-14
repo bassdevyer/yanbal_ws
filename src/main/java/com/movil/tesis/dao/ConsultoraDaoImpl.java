@@ -18,7 +18,7 @@ public class ConsultoraDaoImpl implements ConsultoraDao {
 
     public Consultora getByUsernameAndPassword(String username, String password) throws Exception {
         Session session = sessionFactory.getCurrentSession();
-        Query query = session.createQuery("from Consultora where emailConsultora = :username and password = :password");
+        Query query = session.createQuery("from Consultora where identificacionConsultora = :username and password = :password");
         query.setParameter("username", username);
         query.setParameter("password", password);
         return (Consultora) query.uniqueResult();
