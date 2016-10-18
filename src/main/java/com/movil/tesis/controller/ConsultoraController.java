@@ -4,10 +4,7 @@ import com.movil.tesis.model.Consultora;
 import com.movil.tesis.service.ConsultoraService;
 
 import javax.jws.WebService;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 
 /**
  * Created by mac on 10/12/16.
@@ -34,4 +31,19 @@ public class ConsultoraController {
         }
         return outcome;
     }
+
+    @POST
+    @Path("/registerconsultant")
+    @Produces("application/json")
+    @Consumes("application/json")
+    public Consultora register(Consultora consultora) {
+        Consultora outcome = null;
+        try {
+            outcome = consultoraService.save(consultora);
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        }
+        return outcome;
+    }
+
 }

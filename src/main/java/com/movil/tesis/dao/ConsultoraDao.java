@@ -11,4 +11,7 @@ public interface ConsultoraDao {
     @Transactional
     Consultora getByUsernameAndPassword(String username, String password) throws Exception;
 
+    @Transactional
+    Consultora save(Consultora consultora) throws Exception;
+
 }

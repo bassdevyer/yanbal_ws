@@ -1,9 +1,6 @@
 package com.movil.tesis.model;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * Created by mac on 10/12/16.

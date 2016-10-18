@@ -23,4 +23,14 @@ public class ConsultoraDaoImpl implements ConsultoraDao {
         query.setParameter("password", password);
         return (Consultora) query.uniqueResult();
     }
+
+    @Override
+    public Consultora save(Consultora consultora) throws Exception {
+        Session session = sessionFactory.getCurrentSession();
+        String newId = (String) session.save(consultora);
+        if (newId != null) {
+            return (Consultora) session.get(Consultora.class, newId);
+        }
+        return null;
+    }
 }

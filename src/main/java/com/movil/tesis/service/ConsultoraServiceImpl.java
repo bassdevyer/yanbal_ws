@@ -18,4 +18,8 @@ public class ConsultoraServiceImpl implements ConsultoraService {
         return consultoraDao.getByUsernameAndPassword(username, password);
     }
 
+    @Override
+    public Consultora save(Consultora consultora) throws Exception {
+        return consultoraDao.save(consultora);
+    }
 }
