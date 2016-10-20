@@ -57,7 +57,7 @@
     </bean>
     <!-- Web Service Bean Definition -->
 
-    <bean id="consultoraController" class="com.movil.tesis.controller.ConsultoraController">
+    <bean id="consultoraController" class="com.movil.tesis.controller.WSController">
         <property name="consultoraService" ref="consultoraService"/>
     </bean>
 

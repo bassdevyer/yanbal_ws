@@ -11,7 +11,7 @@ import javax.ws.rs.*;
  */
 @Path("/")
 @WebService(name = "yanbalWs")
-public class ConsultoraController {
+public class WSController {
 
     private ConsultoraService consultoraService;
 
@@ -20,9 +20,9 @@ public class ConsultoraController {
     }
 
     @GET
-    @Path("/authenticate/{username}/{password}")
+    @Path("/authenticate")
     @Produces("application/json")
-    public Consultora authenticate(@PathParam("username") String username, @PathParam("password") String password) {
+    public Consultora authenticate(@QueryParam("username") String username, @QueryParam("password") String password) {
         Consultora outcome = null;
         try {
             outcome = consultoraService.findByUsernamePassword(username, password);
