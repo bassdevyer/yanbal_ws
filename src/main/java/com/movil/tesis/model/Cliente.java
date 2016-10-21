@@ -4,9 +4,10 @@ import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import java.math.BigDecimal;
 
 /**
- * Created by mac on 10/12/16.
+ * Created by mac on 10/20/16.
  */
 @Entity
 public class Cliente {
@@ -19,10 +20,11 @@ public class Cliente {
     private String telefonoCliente;
     private String fechaNacimientoCliente;
     private String generoCliente;
-    private String password;
+    private BigDecimal latitudCliente;
+    private BigDecimal longitudCliente;
 
     @Id
-    @Column(name = "IDENTIFICACION_CLIENTE")
+    @Column(name = "IDENTIFICACION_CLIENTE", nullable = false, length = 15)
     public String getIdentificacionCliente() {
         return identificacionCliente;
     }
@@ -32,7 +34,7 @@ public class Cliente {
     }
 
     @Basic
-    @Column(name = "TIPO_IDENTIFICACION_CLIENTE")
+    @Column(name = "TIPO_IDENTIFICACION_CLIENTE", nullable = false, length = 36)
     public String getTipoIdentificacionCliente() {
         return tipoIdentificacionCliente;
     }
@@ -42,7 +44,7 @@ public class Cliente {
     }
 
     @Basic
-    @Column(name = "NOMBRES_CLIENTE")
+    @Column(name = "NOMBRES_CLIENTE", nullable = false, length = 50)
     public String getNombresCliente() {
         return nombresCliente;
     }
@@ -52,7 +54,7 @@ public class Cliente {
     }
 
     @Basic
-    @Column(name = "APELLIDOS_CLIENTE")
+    @Column(name = "APELLIDOS_CLIENTE", nullable = false, length = 50)
     public String getApellidosCliente() {
         return apellidosCliente;
     }
@@ -62,7 +64,7 @@ public class Cliente {
     }
 
     @Basic
-    @Column(name = "EMAIL_CLIENTE")
+    @Column(name = "EMAIL_CLIENTE", nullable = false, length = 50)
     public String getEmailCliente() {
         return emailCliente;
     }
@@ -72,7 +74,7 @@ public class Cliente {
     }
 
     @Basic
-    @Column(name = "CELULAR_CLIENTE")
+    @Column(name = "CELULAR_CLIENTE", nullable = false, length = 16)
     public String getCelularCliente() {
         return celularCliente;
     }
@@ -82,7 +84,7 @@ public class Cliente {
     }
 
     @Basic
-    @Column(name = "TELEFONO_CLIENTE")
+    @Column(name = "TELEFONO_CLIENTE", nullable = false, length = 16)
     public String getTelefonoCliente() {
         return telefonoCliente;
     }
@@ -92,7 +94,7 @@ public class Cliente {
     }
 
     @Basic
-    @Column(name = "FECHA_NACIMIENTO_CLIENTE")
+    @Column(name = "FECHA_NACIMIENTO_CLIENTE", nullable = false, length = 25)
     public String getFechaNacimientoCliente() {
         return fechaNacimientoCliente;
     }
@@ -102,7 +104,7 @@ public class Cliente {
     }
 
     @Basic
-    @Column(name = "GENERO_CLIENTE")
+    @Column(name = "GENERO_CLIENTE", nullable = false, length = 16)
     public String getGeneroCliente() {
         return generoCliente;
     }
@@ -112,13 +114,23 @@ public class Cliente {
     }
 
     @Basic
-    @Column(name = "PASSWORD")
-    public String getPassword() {
-        return password;
+    @Column(name = "LATITUD_CLIENTE", nullable = false, precision = 6)
+    public BigDecimal getLatitudCliente() {
+        return latitudCliente;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setLatitudCliente(BigDecimal latitudCliente) {
+        this.latitudCliente = latitudCliente;
+    }
+
+    @Basic
+    @Column(name = "LONGITUD_CLIENTE", nullable = false, precision = 6)
+    public BigDecimal getLongitudCliente() {
+        return longitudCliente;
+    }
+
+    public void setLongitudCliente(BigDecimal longitudCliente) {
+        this.longitudCliente = longitudCliente;
     }
 
     @Override
@@ -146,7 +158,10 @@ public class Cliente {
             return false;
         if (generoCliente != null ? !generoCliente.equals(cliente.generoCliente) : cliente.generoCliente != null)
             return false;
-        if (password != null ? !password.equals(cliente.password) : cliente.password != null) return false;
+        if (latitudCliente != null ? !latitudCliente.equals(cliente.latitudCliente) : cliente.latitudCliente != null)
+            return false;
+        if (longitudCliente != null ? !longitudCliente.equals(cliente.longitudCliente) : cliente.longitudCliente != null)
+            return false;
 
         return true;
     }
@@ -162,7 +177,8 @@ public class Cliente {
         result = 31 * result + (telefonoCliente != null ? telefonoCliente.hashCode() : 0);
         result = 31 * result + (fechaNacimientoCliente != null ? fechaNacimientoCliente.hashCode() : 0);
         result = 31 * result + (generoCliente != null ? generoCliente.hashCode() : 0);
-        result = 31 * result + (password != null ? password.hashCode() : 0);
+        result = 31 * result + (latitudCliente != null ? latitudCliente.hashCode() : 0);
+        result = 31 * result + (longitudCliente != null ? longitudCliente.hashCode() : 0);
         return result;
     }
 }

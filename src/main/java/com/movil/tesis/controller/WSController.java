@@ -1,6 +1,8 @@
 package com.movil.tesis.controller;
 
+import com.movil.tesis.model.Cliente;
 import com.movil.tesis.model.Consultora;
+import com.movil.tesis.service.ClienteService;
 import com.movil.tesis.service.ConsultoraService;
 
 import javax.jws.WebService;
@@ -14,9 +16,14 @@ import javax.ws.rs.*;
 public class WSController {
 
     private ConsultoraService consultoraService;
+    private ClienteService clienteService;
 
     public void setConsultoraService(ConsultoraService consultoraService) {
         this.consultoraService = consultoraService;
+    }
+
+    public void setClienteService(ClienteService clienteService) {
+        this.clienteService = clienteService;
     }
 
     @GET
@@ -46,4 +53,17 @@ public class WSController {
         return outcome;
     }
 
+    @POST
+    @Path("/registerclient")
+    @Produces("application/json")
+    @Consumes("application/json")
+    public Cliente registerClient(Cliente cliente) {
+        Cliente outcome = null;
+        try {
+            outcome = clienteService.save(cliente);
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        }
+        return outcome;
+    }
 }

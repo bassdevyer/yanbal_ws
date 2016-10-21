@@ -15,7 +15,7 @@
             <ref bean="jsonProvider"/>
         </jaxrs:providers>
         <jaxrs:serviceBeans>
-            <ref bean="consultoraController"/>
+            <ref bean="wsController"/>
         </jaxrs:serviceBeans>
         <jaxrs:extensionMappings>
             <entry key="xml" value="application/xml"/>
@@ -33,6 +33,8 @@
             <props>
                 <prop key="hibernate.dialect">org.hibernate.dialect.SQLServer2008Dialect</prop>
                 <prop key="hibernate.show_sql">true</prop>
+                <prop key="hibernate.connection.url">jdbc:sqlserver://192.168.1.9\SQL2008;databaseName=yanbal</prop>
+                <prop key="hibernate.connection.driver_class">com.microsoft.sqlserver.jdbc.SQLServerDriver</prop>
             </props>
         </property>
         <property name="annotatedClasses">
@@ -51,24 +53,31 @@
     <bean id="dataSource"
           class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="com.microsoft.sqlserver.jdbc.SQLServerDriver"/>
-        <property name="url" value="jdbc:sqlserver://192.168.1.10\SQL2008;databaseName=yanbal"/>
+        <property name="url" value="jdbc:sqlserver://192.168.1.9\SQL2008;databaseName=yanbal"/>
         <property name="username" value="sa"/>
         <property name="password" value="yanbal"/>
     </bean>
     <!-- Web Service Bean Definition -->
 
-    <bean id="consultoraController" class="com.movil.tesis.controller.WSController">
+    <bean id="wsController" class="com.movil.tesis.controller.WSController">
         <property name="consultoraService" ref="consultoraService"/>
+        <property name="clienteService" ref="clienteService"/>
     </bean>
 
     <!-- DAO Beans Definition-->
     <bean id="consultoraDao" class="com.movil.tesis.dao.ConsultoraDaoImpl">
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
+    <bean id="clienteDao" class="com.movil.tesis.dao.ClienteDaoImpl">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
 
     <!-- Service Beans Definition -->
     <bean id="consultoraService" class="com.movil.tesis.service.ConsultoraServiceImpl">
         <property name="consultoraDao" ref="consultoraDao"/>
+    </bean>
+    <bean id="clienteService" class="com.movil.tesis.service.ClienteServiceImpl">
+        <property name="clienteDao" ref="clienteDao"/>
     </bean>
 
     <!-- Provider beans -->
