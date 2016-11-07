@@ -6,6 +6,8 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
+import java.util.List;
+
 /**
  * Created by mac on 10/13/16.
  */
@@ -25,5 +27,11 @@ public class ClienteDaoImpl implements ClienteDao {
             return (Cliente) session.get(Cliente.class, newId);
         }
         return null;
+    }
+
+    @Override
+    public List<Cliente> getClients() throws Exception {
+        Session session = sessionFactory.getCurrentSession();
+        return session.createCriteria(Cliente.class).list();
     }
 }

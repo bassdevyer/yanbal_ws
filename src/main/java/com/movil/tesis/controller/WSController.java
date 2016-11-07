@@ -7,6 +7,7 @@ import com.movil.tesis.service.ConsultoraService;
 
 import javax.jws.WebService;
 import javax.ws.rs.*;
+import java.util.List;
 
 /**
  * Created by mac on 10/12/16.
@@ -66,4 +67,19 @@ public class WSController {
         }
         return outcome;
     }
+
+    @GET
+    @Path("/clients")
+    @Produces("application/json")
+    public List<Cliente> getClients() {
+        List<Cliente> outcome = null;
+        try {
+            outcome = clienteService.getClients();
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        }
+        return outcome;
+    }
+
+
 }
