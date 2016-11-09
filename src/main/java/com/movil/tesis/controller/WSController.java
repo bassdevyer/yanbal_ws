@@ -2,8 +2,10 @@ package com.movil.tesis.controller;
 
 import com.movil.tesis.model.Cliente;
 import com.movil.tesis.model.Consultora;
+import com.movil.tesis.model.ProductosYanbal;
 import com.movil.tesis.service.ClienteService;
 import com.movil.tesis.service.ConsultoraService;
+import com.movil.tesis.service.ProductService;
 
 import javax.jws.WebService;
 import javax.ws.rs.*;
@@ -18,6 +20,12 @@ public class WSController {
 
     private ConsultoraService consultoraService;
     private ClienteService clienteService;
+    private ProductService productService;
+
+    public void setProductService(ProductService productService) {
+        this.productService = productService;
+    }
+
 
     public void setConsultoraService(ConsultoraService consultoraService) {
         this.consultoraService = consultoraService;
@@ -75,6 +83,20 @@ public class WSController {
         List<Cliente> outcome = null;
         try {
             outcome = clienteService.getClients();
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        }
+        return outcome;
+    }
+
+
+    @GET
+    @Path("/check")
+    @Produces("application/json")
+    public ProductosYanbal checkExistence(@QueryParam("code") String code) {
+        ProductosYanbal outcome = null;
+        try {
+            outcome = productService.checkExistence(code);
         } catch (Exception exception) {
             exception.printStackTrace();
         }
