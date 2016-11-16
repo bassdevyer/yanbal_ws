@@ -1,22 +1,19 @@
 package com.movil.tesis.model;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
- * Created by mac on 10/12/16.
+ * Created by mac on 11/14/16.
  */
 @Entity
 public class Semana {
     private int codSemana;
-    private int codCampana;
     private String descripcionSemana;
     private String estadoSemana;
+    private Campana campanaByCodCampana;
 
     @Id
-    @Column(name = "COD_SEMANA")
+    @Column(name = "COD_SEMANA", nullable = false)
     public int getCodSemana() {
         return codSemana;
     }
@@ -26,17 +23,7 @@ public class Semana {
     }
 
     @Basic
-    @Column(name = "COD_CAMPANA")
-    public int getCodCampana() {
-        return codCampana;
-    }
-
-    public void setCodCampana(int codCampana) {
-        this.codCampana = codCampana;
-    }
-
-    @Basic
-    @Column(name = "DESCRIPCION_SEMANA")
+    @Column(name = "DESCRIPCION_SEMANA", nullable = false, length = 255)
     public String getDescripcionSemana() {
         return descripcionSemana;
     }
@@ -46,7 +33,7 @@ public class Semana {
     }
 
     @Basic
-    @Column(name = "ESTADO_SEMANA")
+    @Column(name = "ESTADO_SEMANA", nullable = false, length = 1)
     public String getEstadoSemana() {
         return estadoSemana;
     }
@@ -63,7 +50,6 @@ public class Semana {
         Semana semana = (Semana) o;
 
         if (codSemana != semana.codSemana) return false;
-        if (codCampana != semana.codCampana) return false;
         if (descripcionSemana != null ? !descripcionSemana.equals(semana.descripcionSemana) : semana.descripcionSemana != null)
             return false;
         if (estadoSemana != null ? !estadoSemana.equals(semana.estadoSemana) : semana.estadoSemana != null)
@@ -75,9 +61,18 @@ public class Semana {
     @Override
     public int hashCode() {
         int result = codSemana;
-        result = 31 * result + codCampana;
         result = 31 * result + (descripcionSemana != null ? descripcionSemana.hashCode() : 0);
         result = 31 * result + (estadoSemana != null ? estadoSemana.hashCode() : 0);
         return result;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "COD_CAMPANA", referencedColumnName = "COD_CAMPANA", nullable = false)
+    public Campana getCampanaByCodCampana() {
+        return campanaByCodCampana;
+    }
+
+    public void setCampanaByCodCampana(Campana campanaByCodCampana) {
+        this.campanaByCodCampana = campanaByCodCampana;
     }
 }

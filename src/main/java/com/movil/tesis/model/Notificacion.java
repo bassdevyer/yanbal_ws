@@ -1,22 +1,19 @@
 package com.movil.tesis.model;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
- * Created by mac on 10/12/16.
+ * Created by mac on 11/14/16.
  */
 @Entity
 public class Notificacion {
     private String idTelefono;
-    private String identificacionConsultora;
     private String identificacion;
     private String estado;
+    private Consultora consultoraByIdentificacionConsultora;
 
     @Id
-    @Column(name = "ID_TELEFONO")
+    @Column(name = "ID_TELEFONO", nullable = false, length = 255)
     public String getIdTelefono() {
         return idTelefono;
     }
@@ -26,17 +23,7 @@ public class Notificacion {
     }
 
     @Basic
-    @Column(name = "IDENTIFICACION_CONSULTORA")
-    public String getIdentificacionConsultora() {
-        return identificacionConsultora;
-    }
-
-    public void setIdentificacionConsultora(String identificacionConsultora) {
-        this.identificacionConsultora = identificacionConsultora;
-    }
-
-    @Basic
-    @Column(name = "IDENTIFICACION")
+    @Column(name = "IDENTIFICACION", nullable = false, length = 15)
     public String getIdentificacion() {
         return identificacion;
     }
@@ -46,7 +33,7 @@ public class Notificacion {
     }
 
     @Basic
-    @Column(name = "ESTADO")
+    @Column(name = "ESTADO", nullable = false, length = 1)
     public String getEstado() {
         return estado;
     }
@@ -63,8 +50,6 @@ public class Notificacion {
         Notificacion that = (Notificacion) o;
 
         if (idTelefono != null ? !idTelefono.equals(that.idTelefono) : that.idTelefono != null) return false;
-        if (identificacionConsultora != null ? !identificacionConsultora.equals(that.identificacionConsultora) : that.identificacionConsultora != null)
-            return false;
         if (identificacion != null ? !identificacion.equals(that.identificacion) : that.identificacion != null)
             return false;
         if (estado != null ? !estado.equals(that.estado) : that.estado != null) return false;
@@ -75,9 +60,18 @@ public class Notificacion {
     @Override
     public int hashCode() {
         int result = idTelefono != null ? idTelefono.hashCode() : 0;
-        result = 31 * result + (identificacionConsultora != null ? identificacionConsultora.hashCode() : 0);
         result = 31 * result + (identificacion != null ? identificacion.hashCode() : 0);
         result = 31 * result + (estado != null ? estado.hashCode() : 0);
         return result;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "IDENTIFICACION_CONSULTORA", referencedColumnName = "IDENTIFICACION_CONSULTORA", nullable = false)
+    public Consultora getConsultoraByIdentificacionConsultora() {
+        return consultoraByIdentificacionConsultora;
+    }
+
+    public void setConsultoraByIdentificacionConsultora(Consultora consultoraByIdentificacionConsultora) {
+        this.consultoraByIdentificacionConsultora = consultoraByIdentificacionConsultora;
     }
 }

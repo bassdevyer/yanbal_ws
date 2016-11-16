@@ -7,7 +7,7 @@ import javax.persistence.Id;
 import java.math.BigDecimal;
 
 /**
- * Created by mac on 10/20/16.
+ * Created by mac on 11/14/16.
  */
 @Entity
 public class Cliente {

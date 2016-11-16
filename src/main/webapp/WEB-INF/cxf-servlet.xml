@@ -33,6 +33,8 @@
             <props>
                 <prop key="hibernate.dialect">org.hibernate.dialect.SQLServer2008Dialect</prop>
                 <prop key="hibernate.show_sql">true</prop>
+                <prop key="hibernate.connection.url">jdbc:sqlserver://192.168.1.9\SQL2008;databaseName=yanbal</prop>
+                <prop key="hibernate.connection.driver_class">com.microsoft.sqlserver.jdbc.SQLServerDriver</prop>
             </props>
         </property>
         <property name="annotatedClasses">
@@ -53,6 +55,10 @@
             <props>
                 <prop key="hibernate.dialect">org.hibernate.dialect.SQLServer2008Dialect</prop>
                 <prop key="hibernate.show_sql">true</prop>
+                <prop key="hibernate.connection.url">
+                    jdbc:sqlserver://192.168.1.9\SQL2008;databaseName=yanbalcatalogo
+                </prop>
+                <prop key="hibernate.connection.driver_class">com.microsoft.sqlserver.jdbc.SQLServerDriver</prop>
             </props>
         </property>
         <property name="annotatedClasses">
@@ -83,6 +89,7 @@
         <property name="consultoraService" ref="consultoraService"/>
         <property name="clienteService" ref="clienteService"/>
         <property name="productService" ref="productService"/>
+        <property name="pedidosCabeceraService" ref="pedidosCabeceraService"/>
     </bean>
 
     <!-- DAO Beans Definition-->
@@ -95,6 +102,9 @@
     <bean id="productDao" class="com.movil.tesis.dao.ProductDaoImpl">
         <property name="sessionFactory" ref="sessionFactoryCatalog"/>
     </bean>
+    <bean id="pedidosCabeceraDao" class="com.movil.tesis.dao.PedidosCabeceraDaoImpl">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
 
     <!-- Service Beans Definition -->
     <bean id="consultoraService" class="com.movil.tesis.service.ConsultoraServiceImpl">
@@ -105,6 +115,9 @@
     </bean>
     <bean id="productService" class="com.movil.tesis.service.ProductServiceImpl">
         <property name="productDao" ref="productDao"/>
+    </bean>
+    <bean id="pedidosCabeceraService" class="com.movil.tesis.service.PedidosCabeceraServiceImpl">
+        <property name="pedidosCabeceraDao" ref="pedidosCabeceraDao"/>
     </bean>
 
     <!-- Provider beans -->

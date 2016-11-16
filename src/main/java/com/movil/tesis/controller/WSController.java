@@ -2,9 +2,11 @@ package com.movil.tesis.controller;
 
 import com.movil.tesis.model.Cliente;
 import com.movil.tesis.model.Consultora;
+import com.movil.tesis.model.PedidosCabecera;
 import com.movil.tesis.model.ProductosYanbal;
 import com.movil.tesis.service.ClienteService;
 import com.movil.tesis.service.ConsultoraService;
+import com.movil.tesis.service.PedidosCabeceraService;
 import com.movil.tesis.service.ProductService;
 
 import javax.jws.WebService;
@@ -21,6 +23,7 @@ public class WSController {
     private ConsultoraService consultoraService;
     private ClienteService clienteService;
     private ProductService productService;
+    private PedidosCabeceraService pedidosCabeceraService;
 
     public void setProductService(ProductService productService) {
         this.productService = productService;
@@ -33,6 +36,10 @@ public class WSController {
 
     public void setClienteService(ClienteService clienteService) {
         this.clienteService = clienteService;
+    }
+
+    public void setPedidosCabeceraService(PedidosCabeceraService pedidosCabeceraService) {
+        this.pedidosCabeceraService = pedidosCabeceraService;
     }
 
     @GET
@@ -97,6 +104,20 @@ public class WSController {
         ProductosYanbal outcome = null;
         try {
             outcome = productService.checkExistence(code);
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        }
+        return outcome;
+    }
+
+    @POST
+    @Path("/registerorder")
+    @Produces("application/json")
+    @Consumes("application/json")
+    public PedidosCabecera registerOrder(PedidosCabecera order) {
+        PedidosCabecera outcome = null;
+        try {
+            outcome = pedidosCabeceraService.registerOrder(order);
         } catch (Exception exception) {
             exception.printStackTrace();
         }

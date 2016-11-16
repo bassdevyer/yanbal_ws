@@ -7,11 +7,11 @@ import javax.persistence.Id;
 import java.math.BigDecimal;
 
 /**
- * Created by mac on 10/31/16.
+ * Created by mac on 11/15/16.
  */
 @Entity
 public class ProductosYanbal {
-    private Integer codigo;
+    private int codigo;
     private Integer codigoRapido;
     private String nombreProducto;
     private BigDecimal valor;
@@ -19,12 +19,12 @@ public class ProductosYanbal {
     private Integer stock;
 
     @Id
-    @Column(name = "codigo", nullable = true)
-    public Integer getCodigo() {
+    @Column(name = "codigo", nullable = false)
+    public int getCodigo() {
         return codigo;
     }
 
-    public void setCodigo(Integer codigo) {
+    public void setCodigo(int codigo) {
         this.codigo = codigo;
     }
 
@@ -85,7 +85,7 @@ public class ProductosYanbal {
 
         ProductosYanbal that = (ProductosYanbal) o;
 
-        if (codigo != null ? !codigo.equals(that.codigo) : that.codigo != null) return false;
+        if (codigo != that.codigo) return false;
         if (codigoRapido != null ? !codigoRapido.equals(that.codigoRapido) : that.codigoRapido != null) return false;
         if (nombreProducto != null ? !nombreProducto.equals(that.nombreProducto) : that.nombreProducto != null)
             return false;
@@ -98,7 +98,7 @@ public class ProductosYanbal {
 
     @Override
     public int hashCode() {
-        int result = codigo != null ? codigo.hashCode() : 0;
+        int result = codigo;
         result = 31 * result + (codigoRapido != null ? codigoRapido.hashCode() : 0);
         result = 31 * result + (nombreProducto != null ? nombreProducto.hashCode() : 0);
         result = 31 * result + (valor != null ? valor.hashCode() : 0);

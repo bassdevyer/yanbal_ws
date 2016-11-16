@@ -1,20 +1,24 @@
 package com.movil.tesis.model;
 
+
 import javax.persistence.*;
+import java.util.Collection;
 
 /**
- * Created by mac on 10/12/16.
+ * Created by mac on 11/14/16.
  */
 @Entity
 @Table(name = "PEDIDOS_CABECERA", schema = "dbo", catalog = "yanbal")
 public class PedidosCabecera {
     private int codigoPedidoCabecera;
-    private String identificacionConsultora;
-    private String identificacionCliente;
     private String fechaCompra;
+    private Consultora consultora;
+    private Cliente cliente;
+    private Collection<PedidosDetalle> pedidosDetalles;
 
     @Id
-    @Column(name = "CODIGO_PEDIDO_CABECERA")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "CODIGO_PEDIDO_CABECERA", nullable = false)
     public int getCodigoPedidoCabecera() {
         return codigoPedidoCabecera;
     }
@@ -24,27 +28,7 @@ public class PedidosCabecera {
     }
 
     @Basic
-    @Column(name = "IDENTIFICACION_CONSULTORA")
-    public String getIdentificacionConsultora() {
-        return identificacionConsultora;
-    }
-
-    public void setIdentificacionConsultora(String identificacionConsultora) {
-        this.identificacionConsultora = identificacionConsultora;
-    }
-
-    @Basic
-    @Column(name = "IDENTIFICACION_CLIENTE")
-    public String getIdentificacionCliente() {
-        return identificacionCliente;
-    }
-
-    public void setIdentificacionCliente(String identificacionCliente) {
-        this.identificacionCliente = identificacionCliente;
-    }
-
-    @Basic
-    @Column(name = "FECHA_COMPRA")
+    @Column(name = "FECHA_COMPRA", nullable = false, length = 16)
     public String getFechaCompra() {
         return fechaCompra;
     }
@@ -61,10 +45,6 @@ public class PedidosCabecera {
         PedidosCabecera that = (PedidosCabecera) o;
 
         if (codigoPedidoCabecera != that.codigoPedidoCabecera) return false;
-        if (identificacionConsultora != null ? !identificacionConsultora.equals(that.identificacionConsultora) : that.identificacionConsultora != null)
-            return false;
-        if (identificacionCliente != null ? !identificacionCliente.equals(that.identificacionCliente) : that.identificacionCliente != null)
-            return false;
         if (fechaCompra != null ? !fechaCompra.equals(that.fechaCompra) : that.fechaCompra != null) return false;
 
         return true;
@@ -73,9 +53,36 @@ public class PedidosCabecera {
     @Override
     public int hashCode() {
         int result = codigoPedidoCabecera;
-        result = 31 * result + (identificacionConsultora != null ? identificacionConsultora.hashCode() : 0);
-        result = 31 * result + (identificacionCliente != null ? identificacionCliente.hashCode() : 0);
         result = 31 * result + (fechaCompra != null ? fechaCompra.hashCode() : 0);
         return result;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "IDENTIFICACION_CONSULTORA", referencedColumnName = "IDENTIFICACION_CONSULTORA", nullable = false)
+    public Consultora getConsultora() {
+        return consultora;
+    }
+
+    public void setConsultora(Consultora consultoraByIdentificacionConsultora) {
+        this.consultora = consultoraByIdentificacionConsultora;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "IDENTIFICACION_CLIENTE", referencedColumnName = "IDENTIFICACION_CLIENTE", nullable = false)
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente clienteByIdentificacionCliente) {
+        this.cliente = clienteByIdentificacionCliente;
+    }
+
+    @OneToMany(mappedBy = "codigoPedidosCabecera", cascade = {CascadeType.ALL})
+    public Collection<PedidosDetalle> getPedidosDetalles() {
+        return pedidosDetalles;
+    }
+
+    public void setPedidosDetalles(Collection<PedidosDetalle> pedidosDetallesByCodigoPedidoCabecera) {
+        this.pedidosDetalles = pedidosDetallesByCodigoPedidoCabecera;
     }
 }

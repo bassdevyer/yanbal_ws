@@ -1,9 +1,12 @@
 package com.movil.tesis.model;
 
-import javax.persistence.*;
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
 /**
- * Created by mac on 10/12/16.
+ * Created by mac on 11/14/16.
  */
 @Entity
 public class Consultora {
@@ -19,7 +22,7 @@ public class Consultora {
     private String password;
 
     @Id
-    @Column(name = "IDENTIFICACION_CONSULTORA")
+    @Column(name = "IDENTIFICACION_CONSULTORA", nullable = false, length = 15)
     public String getIdentificacionConsultora() {
         return identificacionConsultora;
     }
@@ -29,7 +32,7 @@ public class Consultora {
     }
 
     @Basic
-    @Column(name = "TIPO_IDENTIFICACION_CONSULTORA")
+    @Column(name = "TIPO_IDENTIFICACION_CONSULTORA", nullable = false, length = 36)
     public String getTipoIdentificacionConsultora() {
         return tipoIdentificacionConsultora;
     }
@@ -39,7 +42,7 @@ public class Consultora {
     }
 
     @Basic
-    @Column(name = "NOMBRES_CONSULTORA")
+    @Column(name = "NOMBRES_CONSULTORA", nullable = false, length = 50)
     public String getNombresConsultora() {
         return nombresConsultora;
     }
@@ -49,7 +52,7 @@ public class Consultora {
     }
 
     @Basic
-    @Column(name = "APELLIDOS_CONSULTORA")
+    @Column(name = "APELLIDOS_CONSULTORA", nullable = false, length = 50)
     public String getApellidosConsultora() {
         return apellidosConsultora;
     }
@@ -59,7 +62,7 @@ public class Consultora {
     }
 
     @Basic
-    @Column(name = "EMAIL_CONSULTORA")
+    @Column(name = "EMAIL_CONSULTORA", nullable = false, length = 50)
     public String getEmailConsultora() {
         return emailConsultora;
     }
@@ -69,7 +72,7 @@ public class Consultora {
     }
 
     @Basic
-    @Column(name = "CELULAR_CONSULTORA")
+    @Column(name = "CELULAR_CONSULTORA", nullable = false, length = 16)
     public String getCelularConsultora() {
         return celularConsultora;
     }
@@ -79,7 +82,7 @@ public class Consultora {
     }
 
     @Basic
-    @Column(name = "TELEFONO_CONSULTORA")
+    @Column(name = "TELEFONO_CONSULTORA", nullable = false, length = 16)
     public String getTelefonoConsultora() {
         return telefonoConsultora;
     }
@@ -89,7 +92,7 @@ public class Consultora {
     }
 
     @Basic
-    @Column(name = "FECHA_NACIMIENTO_CONSULTORA")
+    @Column(name = "FECHA_NACIMIENTO_CONSULTORA", nullable = false, length = 25)
     public String getFechaNacimientoConsultora() {
         return fechaNacimientoConsultora;
     }
@@ -99,7 +102,7 @@ public class Consultora {
     }
 
     @Basic
-    @Column(name = "GENERO_CONSULTORA")
+    @Column(name = "GENERO_CONSULTORA", nullable = false, length = 16)
     public String getGeneroConsultora() {
         return generoConsultora;
     }
@@ -109,7 +112,7 @@ public class Consultora {
     }
 
     @Basic
-    @Column(name = "PASSWORD")
+    @Column(name = "PASSWORD", nullable = false, length = 255)
     public String getPassword() {
         return password;
     }
