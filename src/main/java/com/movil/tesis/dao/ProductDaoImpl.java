@@ -19,7 +19,7 @@ public class ProductDaoImpl implements ProductDao {
     @Override
     public ProductosYanbal checkExistence(String code) throws Exception {
         Session session = sessionFactory.getCurrentSession();
-        Query query = session.createQuery("from ProductosYanbal where codigoRapido = :code");
+        Query query = session.createQuery("from ProductosYanbal where codigoRapido = :code and disponible = 1");
         query.setParameter("code", Integer.parseInt(code));
         return (ProductosYanbal) query.uniqueResult();
     }
