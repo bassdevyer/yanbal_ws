@@ -15,6 +15,6 @@ public interface ClienteDao {
     Cliente save(Cliente cliente) throws Exception;
 
     @Transactional
-    List<Cliente> getClients() throws Exception;
+    List<Cliente> getClients(String consultantId) throws Exception;
 
 }

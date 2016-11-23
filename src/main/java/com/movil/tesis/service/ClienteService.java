@@ -11,6 +11,6 @@ public interface ClienteService {
 
     Cliente save(Cliente cliente) throws Exception;
 
-    List<Cliente> getClients() throws Exception;
+    List<Cliente> getClients(String consultantId) throws Exception;
 
 }

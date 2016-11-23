@@ -24,7 +24,7 @@ public class ClienteServiceImpl implements ClienteService {
     }
 
     @Override
-    public List<Cliente> getClients() throws Exception {
-        return clienteDao.getClients();
+    public List<Cliente> getClients(String consultantId) throws Exception {
+        return clienteDao.getClients(consultantId);
     }
 }

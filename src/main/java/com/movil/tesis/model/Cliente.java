@@ -22,6 +22,7 @@ public class Cliente {
     private String generoCliente;
     private BigDecimal latitudCliente;
     private BigDecimal longitudCliente;
+    private String codConsultora;
 
     @Id
     @Column(name = "IDENTIFICACION_CLIENTE", nullable = false, length = 15)
@@ -179,6 +180,17 @@ public class Cliente {
         result = 31 * result + (generoCliente != null ? generoCliente.hashCode() : 0);
         result = 31 * result + (latitudCliente != null ? latitudCliente.hashCode() : 0);
         result = 31 * result + (longitudCliente != null ? longitudCliente.hashCode() : 0);
+        result = 31 * result + (codConsultora != null ? codConsultora.hashCode() : 0);
         return result;
+    }
+
+    @Basic
+    @Column(name = "COD_CONSULTORA", nullable = false, length = 15)
+    public String getCodConsultora() {
+        return codConsultora;
+    }
+
+    public void setCodConsultora(String codConsultora) {
+        this.codConsultora = codConsultora;
     }
 }

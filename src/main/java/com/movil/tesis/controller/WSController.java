@@ -86,10 +86,10 @@ public class WSController {
     @GET
     @Path("/clients")
     @Produces("application/json")
-    public List<Cliente> getClients() {
+    public List<Cliente> getClients(@QueryParam("consultantid") String consultantId) {
         List<Cliente> outcome = null;
         try {
-            outcome = clienteService.getClients();
+            outcome = clienteService.getClients(consultantId);
         } catch (Exception exception) {
             exception.printStackTrace();
         }

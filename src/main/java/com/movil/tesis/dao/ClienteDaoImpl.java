@@ -30,8 +30,10 @@ public class ClienteDaoImpl implements ClienteDao {
     }
 
     @Override
-    public List<Cliente> getClients() throws Exception {
+    public List<Cliente> getClients(String consultantId) throws Exception {
         Session session = sessionFactory.getCurrentSession();
-        return session.createCriteria(Cliente.class).list();
+        Query query = session.createQuery("from Cliente where codConsultora = :consultantId");
+        query.setParameter("consultantId", consultantId);
+        return (List<Cliente>) query.list();
     }
 }
