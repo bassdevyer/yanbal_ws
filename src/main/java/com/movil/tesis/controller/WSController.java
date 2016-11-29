@@ -124,5 +124,17 @@ public class WSController {
         return outcome;
     }
 
+    @GET
+    @Path("/consolidated")
+    @Produces("application/json")
+    public List<PedidosCabecera> getConsolidatedOrders(@QueryParam("campaign") String campaign, @QueryParam("week") String week) {
+        List<PedidosCabecera> outcome = null;
+        try {
+            outcome = pedidosCabeceraService.getConsolidatedOrders(campaign, week);
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        }
+        return outcome;
+    }
 
 }

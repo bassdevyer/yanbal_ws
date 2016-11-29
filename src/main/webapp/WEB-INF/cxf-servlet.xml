@@ -33,7 +33,7 @@
             <props>
                 <prop key="hibernate.dialect">org.hibernate.dialect.SQLServer2008Dialect</prop>
                 <prop key="hibernate.show_sql">true</prop>
-                <prop key="hibernate.connection.url">jdbc:sqlserver://192.168.1.9\SQL2008;databaseName=yanbal</prop>
+                <prop key="hibernate.connection.url">jdbc:sqlserver://192.168.1.11\SQL2008;databaseName=yanbal</prop>
                 <prop key="hibernate.connection.driver_class">com.microsoft.sqlserver.jdbc.SQLServerDriver</prop>
             </props>
         </property>
@@ -56,7 +56,7 @@
                 <prop key="hibernate.dialect">org.hibernate.dialect.SQLServer2008Dialect</prop>
                 <prop key="hibernate.show_sql">true</prop>
                 <prop key="hibernate.connection.url">
-                    jdbc:sqlserver://192.168.1.9\SQL2008;databaseName=yanbalcatalogo
+                    jdbc:sqlserver://192.168.1.11\SQL2008;databaseName=yanbalcatalogo
                 </prop>
                 <prop key="hibernate.connection.driver_class">com.microsoft.sqlserver.jdbc.SQLServerDriver</prop>
             </props>
@@ -71,7 +71,7 @@
     <bean id="dataSource"
           class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="com.microsoft.sqlserver.jdbc.SQLServerDriver"/>
-        <property name="url" value="jdbc:sqlserver://192.168.1.9\SQL2008;databaseName=yanbal"/>
+        <property name="url" value="jdbc:sqlserver://192.168.1.11\SQL2008;databaseName=yanbal"/>
         <property name="username" value="sa"/>
         <property name="password" value="yanbal"/>
     </bean>
@@ -79,7 +79,7 @@
     <bean id="dataSourceCatalog"
           class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="com.microsoft.sqlserver.jdbc.SQLServerDriver"/>
-        <property name="url" value="jdbc:sqlserver://192.168.1.9\SQL2008;databaseName=yanbalcatalogo"/>
+        <property name="url" value="jdbc:sqlserver://192.168.1.11\SQL2008;databaseName=yanbalcatalogo"/>
         <property name="username" value="sa"/>
         <property name="password" value="yanbal"/>
     </bean>

@@ -1,6 +1,10 @@
 package com.movil.tesis.model;
 
 
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 import javax.persistence.*;
 import java.util.Collection;
 
@@ -15,6 +19,8 @@ public class PedidosCabecera {
     private Consultora consultora;
     private Cliente cliente;
     private Collection<PedidosDetalle> pedidosDetalles;
+    private String campana;
+    private String semana;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -77,7 +83,9 @@ public class PedidosCabecera {
         this.cliente = clienteByIdentificacionCliente;
     }
 
-    @OneToMany(mappedBy = "codigoPedidosCabecera", cascade = {CascadeType.ALL})
+    @OneToMany(fetch = FetchType.EAGER)
+    @Cascade(value= {org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.DELETE})
+    @JoinColumn(name="CODIGO_PEDIDO_CABECERA")
     public Collection<PedidosDetalle> getPedidosDetalles() {
         return pedidosDetalles;
     }
@@ -85,4 +93,25 @@ public class PedidosCabecera {
     public void setPedidosDetalles(Collection<PedidosDetalle> pedidosDetallesByCodigoPedidoCabecera) {
         this.pedidosDetalles = pedidosDetallesByCodigoPedidoCabecera;
     }
+
+    @Basic
+    @Column(name = "CAMPANA", nullable = true, length = 10)
+    public String getCampana() {
+        return campana;
+    }
+
+    public void setCampana(String campana) {
+        this.campana = campana;
+    }
+
+    @Basic
+    @Column(name = "SEMANA", nullable = true, length = 10)
+    public String getSemana() {
+        return semana;
+    }
+
+    public void setSemana(String semana) {
+        this.semana = semana;
+    }
+
 }

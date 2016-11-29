@@ -14,7 +14,6 @@ public class PedidosDetalle {
     private int cantidad;
     private double precio;
     private String estado;
-    private int codigoPedidosCabecera;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -110,13 +109,4 @@ public class PedidosDetalle {
         return result;
     }
 
-    @Basic
-    @Column(name = "CODIGO_PEDIDO_CABECERA", nullable = false)
-    public int getCodigoPedidosCabecera() {
-        return codigoPedidosCabecera;
-    }
-
-    public void setCodigoPedidosCabecera(int pedidosCabeceraByCodigoPedidoCabecera) {
-        this.codigoPedidosCabecera = pedidosCabeceraByCodigoPedidoCabecera;
-    }
 }
