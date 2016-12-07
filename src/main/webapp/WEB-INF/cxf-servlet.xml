@@ -33,7 +33,7 @@
             <props>
                 <prop key="hibernate.dialect">org.hibernate.dialect.SQLServer2008Dialect</prop>
                 <prop key="hibernate.show_sql">true</prop>
-                <prop key="hibernate.connection.url">jdbc:sqlserver://192.168.1.11\SQL2008;databaseName=yanbal</prop>
+                <prop key="hibernate.connection.url">jdbc:sqlserver://192.168.1.8\SQL2008;databaseName=yanbal</prop>
                 <prop key="hibernate.connection.driver_class">com.microsoft.sqlserver.jdbc.SQLServerDriver</prop>
             </props>
         </property>
@@ -55,8 +55,7 @@
             <props>
                 <prop key="hibernate.dialect">org.hibernate.dialect.SQLServer2008Dialect</prop>
                 <prop key="hibernate.show_sql">true</prop>
-                <prop key="hibernate.connection.url">
-                    jdbc:sqlserver://192.168.1.11\SQL2008;databaseName=yanbalcatalogo
+                <prop key="hibernate.connection.url">jdbc:sqlserver://192.168.1.8\SQL2008;databaseName=yanbalcatalogo
                 </prop>
                 <prop key="hibernate.connection.driver_class">com.microsoft.sqlserver.jdbc.SQLServerDriver</prop>
             </props>
@@ -64,6 +63,7 @@
         <property name="annotatedClasses">
             <list>
                 <value>com.movil.tesis.model.ProductosYanbal</value>
+                <value>com.movil.tesis.model.CodigosConsultora</value>
             </list>
         </property>
     </bean>
@@ -71,7 +71,7 @@
     <bean id="dataSource"
           class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="com.microsoft.sqlserver.jdbc.SQLServerDriver"/>
-        <property name="url" value="jdbc:sqlserver://192.168.1.11\SQL2008;databaseName=yanbal"/>
+        <property name="url" value="jdbc:sqlserver://192.168.1.8\SQL2008;databaseName=yanbal"/>
         <property name="username" value="sa"/>
         <property name="password" value="yanbal"/>
     </bean>
@@ -79,7 +79,7 @@
     <bean id="dataSourceCatalog"
           class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="com.microsoft.sqlserver.jdbc.SQLServerDriver"/>
-        <property name="url" value="jdbc:sqlserver://192.168.1.11\SQL2008;databaseName=yanbalcatalogo"/>
+        <property name="url" value="jdbc:sqlserver://192.168.1.8\SQL2008;databaseName=yanbalcatalogo"/>
         <property name="username" value="sa"/>
         <property name="password" value="yanbal"/>
     </bean>
@@ -105,10 +105,14 @@
     <bean id="pedidosCabeceraDao" class="com.movil.tesis.dao.PedidosCabeceraDaoImpl">
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
+    <bean id="codigosConsultoraDao" class="com.movil.tesis.dao.CodigosConsultoraDaoImpl">
+        <property name="sessionFactory" ref="sessionFactoryCatalog"/>
+    </bean>
 
     <!-- Service Beans Definition -->
     <bean id="consultoraService" class="com.movil.tesis.service.ConsultoraServiceImpl">
         <property name="consultoraDao" ref="consultoraDao"/>
+        <property name="codigosConsultoraDao" ref="codigosConsultoraDao"/>
     </bean>
     <bean id="clienteService" class="com.movil.tesis.service.ClienteServiceImpl">
         <property name="clienteDao" ref="clienteDao"/>

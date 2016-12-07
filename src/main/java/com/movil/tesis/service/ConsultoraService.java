@@ -9,6 +9,6 @@ public interface ConsultoraService {
 
     Consultora findByUsernamePassword(String username, String password) throws Exception;
 
-    Consultora save(Consultora consultora) throws Exception;
+    Consultora save(Consultora consultora, String securityCode) throws Exception;
 
 }

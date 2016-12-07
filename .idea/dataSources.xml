@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="SQL Server (Microsoft) - yanbalcatalogo@192.168.1.11" uuid="97fc8a9c-cc5a-4853-8af4-354a3422ca4c">
+    <data-source source="LOCAL" name="SQL Server (Microsoft) - yanbalcatalogo@192.168.1.8" uuid="97fc8a9c-cc5a-4853-8af4-354a3422ca4c">
       <driver-ref>sqlserver.ms</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.microsoft.sqlserver.jdbc.SQLServerDriver</jdbc-driver>
-      <jdbc-url>jdbc:sqlserver://192.168.1.11\SQL2008;databaseName=yanbalcatalogo</jdbc-url>
+      <jdbc-url>jdbc:sqlserver://192.168.1.8\SQL2008;databaseName=yanbalcatalogo</jdbc-url>
     </data-source>
-    <data-source source="LOCAL" name="SQL Server (Microsoft) - yanbal@192.168.1.11" uuid="8405155d-7a08-4655-93c7-4dddd9258984">
+    <data-source source="LOCAL" name="SQL Server (Microsoft) - yanbal@192.168.1.8" uuid="8405155d-7a08-4655-93c7-4dddd9258984">
       <driver-ref>sqlserver.ms</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.microsoft.sqlserver.jdbc.SQLServerDriver</jdbc-driver>
-      <jdbc-url>jdbc:sqlserver://192.168.1.11\SQL2008;databaseName=yanbal</jdbc-url>
+      <jdbc-url>jdbc:sqlserver://192.168.1.8\SQL2008;databaseName=yanbal</jdbc-url>
     </data-source>
   </component>
 </project>

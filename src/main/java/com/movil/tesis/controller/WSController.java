@@ -59,10 +59,10 @@ public class WSController {
     @Path("/registerconsultant")
     @Produces("application/json")
     @Consumes("application/json")
-    public Consultora register(Consultora consultora) {
+    public Consultora register(Consultora consultora, @QueryParam("seccode") String securityCode) {
         Consultora outcome = null;
         try {
-            outcome = consultoraService.save(consultora);
+            outcome = consultoraService.save(consultora, securityCode);
         } catch (Exception exception) {
             exception.printStackTrace();
         }
