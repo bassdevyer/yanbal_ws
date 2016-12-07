@@ -33,11 +33,12 @@ public class PedidosCabeceraDaoImpl implements PedidosCabeceraDao {
     }
 
     @Override
-    public List<PedidosCabecera> getConsolidatedOrders(String campaign, String week) throws Exception {
+    public List<PedidosCabecera> getConsolidatedOrders(String campaign, String week, String consultantId) throws Exception {
         Session session = sessionFactory.getCurrentSession();
-        Query query = session.createQuery("from PedidosCabecera where campana = :campaign and semana = :week");
+        Query query = session.createQuery("from PedidosCabecera where campana = :campaign and semana = :week and consultora.identificacionConsultora = :consultantid");
         query.setParameter("campaign", campaign);
         query.setParameter("week", week);
+        query.setParameter("consultantid", consultantId);
         return (List<PedidosCabecera>) query.list();
     }
 

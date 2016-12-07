@@ -21,7 +21,7 @@ public class PedidosCabeceraServiceImpl implements PedidosCabeceraService {
     }
 
     @Override
-    public List<PedidosCabecera> getConsolidatedOrders(String campaign, String week) throws Exception {
-        return pedidosCabeceraDao.getConsolidatedOrders(campaign, week);
+    public List<PedidosCabecera> getConsolidatedOrders(String campaign, String week, String consultantId) throws Exception {
+        return pedidosCabeceraDao.getConsolidatedOrders(campaign, week, consultantId);
     }
 }

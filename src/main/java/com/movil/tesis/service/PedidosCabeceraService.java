@@ -11,5 +11,5 @@ public interface PedidosCabeceraService {
 
     PedidosCabecera registerOrder(PedidosCabecera order) throws Exception;
 
-    List<PedidosCabecera> getConsolidatedOrders(String campaign, String week) throws Exception;
+    List<PedidosCabecera> getConsolidatedOrders(String campaign, String week, String consultantId) throws Exception;
 }

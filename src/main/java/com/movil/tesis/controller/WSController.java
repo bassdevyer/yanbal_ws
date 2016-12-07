@@ -127,10 +127,10 @@ public class WSController {
     @GET
     @Path("/consolidated")
     @Produces("application/json")
-    public List<PedidosCabecera> getConsolidatedOrders(@QueryParam("campaign") String campaign, @QueryParam("week") String week) {
+    public List<PedidosCabecera> getConsolidatedOrders(@QueryParam("campaign") String campaign, @QueryParam("week") String week, @QueryParam("consultantid") String consultantId) {
         List<PedidosCabecera> outcome = null;
         try {
-            outcome = pedidosCabeceraService.getConsolidatedOrders(campaign, week);
+            outcome = pedidosCabeceraService.getConsolidatedOrders(campaign, week, consultantId);
         } catch (Exception exception) {
             exception.printStackTrace();
         }

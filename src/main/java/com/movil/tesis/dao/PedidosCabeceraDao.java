@@ -15,5 +15,5 @@ public interface PedidosCabeceraDao {
     PedidosCabecera save(PedidosCabecera order) throws Exception;
 
     @Transactional
-    List<PedidosCabecera> getConsolidatedOrders(String campaign, String week) throws Exception;
+    List<PedidosCabecera> getConsolidatedOrders(String campaign, String week, String consultantId) throws Exception;
 }
