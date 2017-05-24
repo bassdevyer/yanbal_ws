@@ -71,17 +71,17 @@
     <bean id="dataSource"
           class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="com.microsoft.sqlserver.jdbc.SQLServerDriver"/>
-        <property name="url" value="jdbc:sqlserver://192.168.1.8\SQL2008;databaseName=yanbal"/>
-        <property name="username" value="sa"/>
-        <property name="password" value="yanbal"/>
+        <property name="url" value="jdbc:sqlserver://srvyanbal.database.windows.net:1433;database=Yanbal;user=usrYanbal@srvyanbal;password=usrY@nbal;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;"/>
+        <!--<property name="username" value="usrYanbal@srvyanbal"/>
+        <property name="password" value="usrYanbal"/>-->
     </bean>
 
     <bean id="dataSourceCatalog"
           class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="com.microsoft.sqlserver.jdbc.SQLServerDriver"/>
-        <property name="url" value="jdbc:sqlserver://192.168.1.8\SQL2008;databaseName=yanbalcatalogo"/>
-        <property name="username" value="sa"/>
-        <property name="password" value="yanbal"/>
+        <property name="url" value="jdbc:sqlserver://srvyanbal.database.windows.net:1433;database=YanbalCatalogo;user=usrYanbal@srvyanbal;password=usrY@nbal;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;"/>
+        <!--<property name="username" value="usrYanbal@srvyanbal"/>
+        <property name="password" value="usrYanbal"/>-->
     </bean>
     <!-- Web Service Bean Definition -->
 

@@ -1,0 +1,132 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:jaxrs="http://cxf.apache.org/jaxrs"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+ 	http://cxf.apache.org/jaxrs
+ 	http://cxf.apache.org/schemas/jaxrs.xsd
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+    <import resource="classpath:META-INF/cxf/cxf.xml"/>
+
+    <jaxrs:server id="yanbalWs" address="/yanbalWs">
+        <jaxrs:providers>
+            <ref bean="jsonProvider"/>
+        </jaxrs:providers>
+        <jaxrs:serviceBeans>
+            <ref bean="wsController"/>
+        </jaxrs:serviceBeans>
+        <jaxrs:extensionMappings>
+            <entry key="xml" value="application/xml"/>
+            <entry key="json" value="application/json"/>
+        </jaxrs:extensionMappings>
+    </jaxrs:server>
+
+
+    <bean id="txManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">org.hibernate.dialect.SQLServer2008Dialect</prop>
+                <prop key="hibernate.show_sql">true</prop>
+                <prop key="hibernate.connection.url">jdbc:sqlserver://192.168.1.8\SQL2008;databaseName=yanbal</prop>
+                <prop key="hibernate.connection.driver_class">com.microsoft.sqlserver.jdbc.SQLServerDriver</prop>
+            </props>
+        </property>
+        <property name="annotatedClasses">
+            <list>
+                <value>com.movil.tesis.model.Consultora</value>
+                <value>com.movil.tesis.model.Campana</value>
+                <value>com.movil.tesis.model.Cliente</value>
+                <value>com.movil.tesis.model.Notificacion</value>
+                <value>com.movil.tesis.model.PedidosCabecera</value>
+                <value>com.movil.tesis.model.PedidosDetalle</value>
+                <value>com.movil.tesis.model.Semana</value>
+            </list>
+        </property>
+    </bean>
+    <bean id="sessionFactoryCatalog" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+        <property name="dataSource" ref="dataSourceCatalog"/>
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">org.hibernate.dialect.SQLServer2008Dialect</prop>
+                <prop key="hibernate.show_sql">true</prop>
+                <prop key="hibernate.connection.url">jdbc:sqlserver://192.168.1.8\SQL2008;databaseName=yanbalcatalogo
+                </prop>
+                <prop key="hibernate.connection.driver_class">com.microsoft.sqlserver.jdbc.SQLServerDriver</prop>
+            </props>
+        </property>
+        <property name="annotatedClasses">
+            <list>
+                <value>com.movil.tesis.model.ProductosYanbal</value>
+                <value>com.movil.tesis.model.CodigosConsultora</value>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="dataSource"
+          class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="com.microsoft.sqlserver.jdbc.SQLServerDriver"/>
+        <property name="url" value="jdbc:sqlserver://srvyanbal.database.windows.net:1433;database=Yanbal;user=usrYanbal@srvyanbal;password=usrY@nbal;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;"/>
+        <!--<property name="username" value="usrYanbal@srvyanbal"/>
+        <property name="password" value="usrYanbal"/>-->
+    </bean>
+
+    <bean id="dataSourceCatalog"
+          class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="com.microsoft.sqlserver.jdbc.SQLServerDriver"/>
+        <property name="url" value="jdbc:sqlserver://srvyanbal.database.windows.net:1433;database=YanbalCatalogo;user=usrYanbal@srvyanbal;password=usrY@nbal;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;"/>
+        <!--<property name="username" value="usrYanbal@srvyanbal"/>
+        <property name="password" value="usrYanbal"/>-->
+    </bean>
+    <!-- Web Service Bean Definition -->
+
+    <bean id="wsController" class="com.movil.tesis.controller.WSController">
+        <property name="consultoraService" ref="consultoraService"/>
+        <property name="clienteService" ref="clienteService"/>
+        <property name="productService" ref="productService"/>
+        <property name="pedidosCabeceraService" ref="pedidosCabeceraService"/>
+    </bean>
+
+    <!-- DAO Beans Definition-->
+    <bean id="consultoraDao" class="com.movil.tesis.dao.ConsultoraDaoImpl">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+    <bean id="clienteDao" class="com.movil.tesis.dao.ClienteDaoImpl">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+    <bean id="productDao" class="com.movil.tesis.dao.ProductDaoImpl">
+        <property name="sessionFactory" ref="sessionFactoryCatalog"/>
+    </bean>
+    <bean id="pedidosCabeceraDao" class="com.movil.tesis.dao.PedidosCabeceraDaoImpl">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+    <bean id="codigosConsultoraDao" class="com.movil.tesis.dao.CodigosConsultoraDaoImpl">
+        <property name="sessionFactory" ref="sessionFactoryCatalog"/>
+    </bean>
+
+    <!-- Service Beans Definition -->
+    <bean id="consultoraService" class="com.movil.tesis.service.ConsultoraServiceImpl">
+        <property name="consultoraDao" ref="consultoraDao"/>
+        <property name="codigosConsultoraDao" ref="codigosConsultoraDao"/>
+    </bean>
+    <bean id="clienteService" class="com.movil.tesis.service.ClienteServiceImpl">
+        <property name="clienteDao" ref="clienteDao"/>
+    </bean>
+    <bean id="productService" class="com.movil.tesis.service.ProductServiceImpl">
+        <property name="productDao" ref="productDao"/>
+    </bean>
+    <bean id="pedidosCabeceraService" class="com.movil.tesis.service.PedidosCabeceraServiceImpl">
+        <property name="pedidosCabeceraDao" ref="pedidosCabeceraDao"/>
+    </bean>
+
+    <!-- Provider beans -->
+    <bean id="jsonProvider" class="org.codehaus.jackson.jaxrs.JacksonJsonProvider"/>
+
+    <tx:annotation-driven transaction-manager="txManager"/>
+
+</beans>
