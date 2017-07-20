@@ -28,6 +28,7 @@ public class ConsultoraServiceImpl implements ConsultoraService {
     @Override
     public Consultora save(Consultora consultora, String securityCode) throws Exception {
         if (codigosConsultoraDao.getBySecurityCode(securityCode) != null) {
+            codigosConsultoraDao.deleteSecurityCode(securityCode);
             return consultoraDao.save(consultora);
         }
         return null;

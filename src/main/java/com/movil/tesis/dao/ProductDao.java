@@ -10,4 +10,7 @@ public interface ProductDao {
 
     @Transactional
     ProductosYanbal checkExistence(String code) throws Exception;
+
+    @Transactional
+    void decreaseBy(int id, int quantity) throws Exception;
 }
